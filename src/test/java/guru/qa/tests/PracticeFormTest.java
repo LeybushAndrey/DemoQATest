@@ -4,14 +4,16 @@ import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.SelenideElement;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.Keys;
 
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selectors.byText;
+import static com.codeborne.selenide.Selenide.*;
 
 public class PracticeFormTest {
     @BeforeAll
     static void beforeAll(){
-        Configuration.startMaximized = true;
+      // Configuration.startMaximized = true;
+        Configuration.browserSize = "1920x1080";
     }
 
     @Test
@@ -21,21 +23,20 @@ public class PracticeFormTest {
         $("#firstName").setValue("Alex");
         $("#lastName").setValue("Ivanov");
         $("#userEmail").setValue("Alex@qaguru.com");
-        $("#[for=gender-radio-2]").click();
+        $("[for=gender-radio-1]").click();
         $("#userNumber").setValue("9876543210");
         $("#dateOfBirthInput").click();
-        $(".react-datepicker__month-select").selectOption("Feb");
+        $(".react-datepicker__month-select").selectOption("February");
         $(".react-datepicker__year-select").selectOption("1988");
-        $(".react-datepicker__day react-datepicker__day--028 react-datepicker__day--selected react-datepicker__day--today").click();
+        $(".react-datepicker__month").$(byText("28")).click();
         $("#subjectsInput").setValue("Some subjects");
-        $("#hobbies-checkbox-1").click();
-        $("#uploadPicture").uploadFromClasspath("https://github.com/LeibushVictoria/DemoQATest/blob/master/src/test/resources/test.jpg");
+        $("[for=hobbies-checkbox-1]").click();
+        $("#uploadPicture").uploadFromClasspath("watch-dogs-legion.jpg");
         $("#currentAddress").setValue("some street");
-       // $("#stateCity-wrapper").$(byText("Select State")).scrollIntoView(true).click();
-       // stateSelector.$(byText(state)).click();
-       // stateCityDropdown.click();
-        //citySelector.$(byText(city)).click();
-        $("#submit").click();
+        $("#stateCity-wrapper").$(byText("Select State")).click();
+        $("#state").$(byText("NCR")).click();
+        $("#stateCity-wrapper").$(byText("Select City")).click();
+        $("#city").$(byText("Delhi")).click();
         $("#submit").click();
     }
 }
