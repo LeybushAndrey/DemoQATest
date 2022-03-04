@@ -6,6 +6,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.Keys;
 
+import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
@@ -22,14 +23,14 @@ public class PracticeFormTest {
         open("https://demoqa.com/automation-practice-form");
         $("#firstName").setValue("Alex");
         $("#lastName").setValue("Ivanov");
-        $("#userEmail").setValue("Alex@qaguru.com");
+        $("#userEmail").setValue("alex@qaguru.com");
         $("[for=gender-radio-1]").click();
         $("#userNumber").setValue("9876543210");
         $("#dateOfBirthInput").click();
         $(".react-datepicker__month-select").selectOption("February");
         $(".react-datepicker__year-select").selectOption("1988");
         $(".react-datepicker__month").$(byText("28")).click();
-        $("#subjectsInput").setValue("Some subjects");
+       // $("#subjectsInput").setValue("Some subjects");
         $("[for=hobbies-checkbox-1]").click();
         $("#uploadPicture").uploadFromClasspath("watch-dogs-legion.jpg");
         $("#currentAddress").setValue("some street");
@@ -38,5 +39,13 @@ public class PracticeFormTest {
         $("#stateCity-wrapper").$(byText("Select City")).click();
         $("#city").$(byText("Delhi")).click();
         $("#submit").click();
+
+        $("tbody").shouldHave(
+                text("Alex" + " " + "Ivanov"),
+                text("alex@qaguru.com"),
+                text("9876543210"),
+                text("some street"),
+                text("NCR" + " " + "Delhi")
+        );
     }
 }
