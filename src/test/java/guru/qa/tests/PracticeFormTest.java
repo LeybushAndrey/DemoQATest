@@ -30,7 +30,7 @@ public class PracticeFormTest {
         $(".react-datepicker__month-select").selectOption("February");
         $(".react-datepicker__year-select").selectOption("1988");
         $(".react-datepicker__month").$(byText("28")).click();
-        $("#subjectsInput").setValue("Math").pressEnter();;
+        $("#subjectsInput").setValue("Math").pressEnter();
         $("[for=hobbies-checkbox-1]").click();
         $("#uploadPicture").uploadFromClasspath("watch-dogs-legion.jpg");
         $("#currentAddress").setValue("some street");
