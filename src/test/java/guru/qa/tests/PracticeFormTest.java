@@ -30,7 +30,7 @@ public class PracticeFormTest {
         $(".react-datepicker__month-select").selectOption("February");
         $(".react-datepicker__year-select").selectOption("1988");
         $(".react-datepicker__month").$(byText("28")).click();
-       // $("#subjectsInput").setValue("Some subjects");
+        $("#subjectsInput").setValue("Math").pressEnter();;
         $("[for=hobbies-checkbox-1]").click();
         $("#uploadPicture").uploadFromClasspath("watch-dogs-legion.jpg");
         $("#currentAddress").setValue("some street");
@@ -44,6 +44,7 @@ public class PracticeFormTest {
                 text("Alex" + " " + "Ivanov"),
                 text("alex@qaguru.com"),
                 text("9876543210"),
+                text("Maths"),
                 text("some street"),
                 text("NCR" + " " + "Delhi")
         );
