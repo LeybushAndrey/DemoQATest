@@ -13,6 +13,5 @@ public class DragAndDrop {
         $("#column-a").dragAndDropTo("#column-b");
         $("#column-b").shouldHave(text("A"));
         $("#column-a").shouldHave(text("B"));
-        sleep(5000);
     }
 }
