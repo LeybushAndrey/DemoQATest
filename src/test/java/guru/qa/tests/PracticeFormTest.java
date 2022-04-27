@@ -10,34 +10,31 @@ import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
-public class PracticeFormTest {
-    @BeforeAll
-    static void beforeAll(){
-      // Configuration.startMaximized = true;
-        Configuration.browserSize = "1920x1080";
-    }
+public class PracticeFormTest extends TestBase{
+
 
     @Test
     void fillFormsTest() {
 
         open("https://demoqa.com/automation-practice-form");
+
         $("#firstName").setValue("Alex");
         $("#lastName").setValue("Ivanov");
         $("#userEmail").setValue("alex@qaguru.com");
-        $("[for=gender-radio-1]").click();
+        $("#genterWrapper").$(byText("Male")).click();
         $("#userNumber").setValue("9876543210");
         $("#dateOfBirthInput").click();
         $(".react-datepicker__month-select").selectOption("February");
         $(".react-datepicker__year-select").selectOption("1988");
         $(".react-datepicker__month").$(byText("28")).click();
         $("#subjectsInput").setValue("Math").pressEnter();
-        $("[for=hobbies-checkbox-1]").click();
+        $("#hobbiesWrapper").$(byText("Reading")).click();
         $("#uploadPicture").uploadFromClasspath("watch-dogs-legion.jpg");
         $("#currentAddress").setValue("some street");
-        $("#stateCity-wrapper").$(byText("Select State")).click();
-        $("#state").$(byText("NCR")).click();
-        $("#stateCity-wrapper").$(byText("Select City")).click();
-        $("#city").$(byText("Delhi")).click();
+        $("#state").click();
+        $("#stateCity-wrapper").$(byText("NCR")).click();
+        $("#city").click();
+        $("#stateCity-wrapper").$(byText("Delhi")).click();
         $("#submit").click();
 
         $("tbody").shouldHave(
